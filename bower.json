@@ -1,0 +1,10 @@
+{
+  "name": "wayfarer-site",
+  "version": "0.1.0",
+  "dependencies": {
+    "d3": "latest",
+    "topojson": "latest",
+    "bootstrap": "~3.2.0"
+  },
+  "devDependencies": {}
+}
