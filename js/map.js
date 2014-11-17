@@ -3,12 +3,12 @@ var ProjectionFactory = ProjectionFactory || {};
 
 ProjectionFactory.satellite = function(width, height) {
     return d3.geo.satellite()
-    .distance(1.1)
+//    .distance(1.1)
 //    .scale(5500)
-    .rotate([78.00, -36.50, 2.12])
-    .center([-2, 5])
-    .tilt(5)
-//    .clipAngle(Math.acos(1 / 1.1) * 180 / Math.PI - 1e-6)
+    .rotate([72.00, -33.0, 5.12])
+    .center([-3, 5])
+    .tilt(10)
+    .clipAngle(Math.acos(1 / 1.1) * 180 / Math.PI - 1e-6)
 //    .precision(.1)
     ;
 };
@@ -36,8 +36,10 @@ function BackgroundMap(elementIdSelector) {
         map.path = d3.geo.path().projection(map.projection);
 
         map.svg = d3.select(map.mapSelector).append('svg')
-            .attr('width', map.width)
-            .attr('height', map.height);
+//            .attr('width', map.width)
+//            .attr('height', map.height);
+              .attr("preserveAspectRatio", "xMinYMin meet")
+              .attr("viewBox", "0 0 600 400");
 
         map.cv = map.svg.append('g');
         map.bg = map.svg.append('g');
@@ -57,10 +59,10 @@ function BackgroundMap(elementIdSelector) {
 
             console.log('Drawing state');
 
-            map.projection.scale(.25).translate([0, 0]);
+            map.projection.scale(.3).translate([0, 0]);
 
             var b = map.path.bounds(response),
-                s = 0.95 / Math.max((b[1][0] - b[0][0]) / map.width, (b[1][1] - b[0][1]) / map.height),
+                s = 0.75 / Math.max((b[1][0] - b[0][0]) / map.width, (b[1][1] - b[0][1]) / map.height),
                 t = [(map.width - s * (b[1][0] + b[0][0])) / 2, (map.height - s * (b[1][1] + b[0][1])) / 2];
             map.projection.scale(s).translate(t);
 

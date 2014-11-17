@@ -44,6 +44,8 @@ ul {
     height: 100%;
     width: 100%;
     margin: auto;
+    vertical-align: top;
+    overflow: hidden;
 }
 
 .logo {
